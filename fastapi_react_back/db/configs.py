@@ -1,0 +1,5 @@
+DB_URL = '192.168.1.1'
+DB_PORT = '3306'
+DB_NAME = 'fastapi_react'
+DB_ACCOUNT = 'root'
+DB_PASSWORD = 'password'

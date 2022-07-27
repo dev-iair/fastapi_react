@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  back:           
+    build:
+      context: ./fastapi_react_back
+    stdin_open: true
+    tty: true 
+    ports:
+      - "7111:80" 
+    networks:
+      network:
+        ipv4_address: 172.21.0.3
+    restart: always
+  front:
+    build:
+        context: ./fastapi_react_front
+    stdin_open: true
+    tty: true 
+    volumes:
+      - "/:/"
+    ports:
+      - "7112:80" 
+    networks:
+      network:
+        ipv4_address: 172.21.0.2
+    restart: always
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+          gateway: 172.21.0.1
